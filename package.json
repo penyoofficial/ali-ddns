@@ -1,0 +1,19 @@
+{
+  "name": "ddns-mc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "ts-node index.ts"
+  },
+  "author": "Penyo",
+  "license": "WTFPL",
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@alicloud/alidns20150109": "^3.0.13"
+  }
+}
