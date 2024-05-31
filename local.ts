@@ -1,13 +1,7 @@
-import os from "os";
-
-export function 获取本机IPv6地址() {
-  const networkInterfaces = os.networkInterfaces();
-  for (const interfaceName in networkInterfaces)
-    for (const { address, family } of networkInterfaces[interfaceName]!)
-      if (family === "IPv6" && !address.startsWith("fe80:")) return address;
-  return "";
+export async function getLocalIPv6() {
+  return await (await fetch("https://6.ipw.cn")).text();
 }
 
-export function 获取示例IPv6地址() {
+export function getDemoIPv6() {
   return "2001:0000:0000:0000:0000:0000:0000:0000";
 }

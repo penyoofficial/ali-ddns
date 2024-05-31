@@ -1,4 +1,8 @@
-import { 同步式域名系统代理 } from "./aliyun";
-import { 用户配置 } from "./config";
+import { DNSProxy } from "./aliyun";
+import { option } from "./config";
+import { getLocalIPv6 } from "./local";
 
-同步式域名系统代理.为Minecraft服务器更新基于IPv6的解析记录(用户配置);
+(async () => {
+  option.value = await getLocalIPv6();
+  DNSProxy.updateIPv6(option);
+})();
