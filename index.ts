@@ -1,8 +1,9 @@
-import { DNSProxy } from "./aliyun";
-import { option } from "./config";
-import { getLocalIPv6 } from "./local";
+import { accessKey } from "./config";
+import { Ddns } from "./core";
 
-(async () => {
-  option.value = await getLocalIPv6();
-  DNSProxy.updateIPv6(option);
-})();
+setInterval(async () => {
+  const proxy = Ddns.factory("ali");
+  const { key, value } = accessKey.ali;
+  proxy!.login(key, value);
+  (await proxy!.selectRecord(["next.mc", "penyo.ru"])).updateWithMyIP(6);
+}, 1000 * 60 * 5);
